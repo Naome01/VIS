@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<adresy>
+  <adresa id="0">
+    <ulice>Nova</ulice>
+    <mesto>Opava</mesto>
+    <cislo_popisne>845/6</cislo_popisne>
+  </adresa>
+  <adresa id="1">
+    <ulice>Sokolska</ulice>
+    <mesto>Ostrava</mesto>
+    <cislo_popisne>1160/3</cislo_popisne>
+  </adresa>
+  <adresa id="2">
+    <ulice>Narodni trida</ulice>
+    <mesto>Havirov</mesto>
+    <cislo_popisne>105</cislo_popisne>
+  </adresa>
+  <adresa id="3">
+    <ulice>Kapitána Jaroše</ulice>
+    <mesto>Brno</mesto>
+    <cislo_popisne>1003/5</cislo_popisne>
+  </adresa>
+  <adresa id="4">
+    <ulice>Kosmonautů</ulice>
+    <mesto>Praha 2</mesto>
+    <cislo_popisne>548/6A</cislo_popisne>
+  </adresa>
+  <adresa id="5">
+    <ulice>Stará</ulice>
+    <mesto>Příbram</mesto>
+    <cislo_popisne>6547</cislo_popisne>
+  </adresa>
+  <adresa id="6">
+    <ulice>Kozlovská</ulice>
+    <mesto>Vsetín</mesto>
+    <cislo_popisne>563/7</cislo_popisne>
+  </adresa>
+  <adresa id="7">
+    <ulice>Borová</ulice>
+    <mesto>Bruntál</mesto>
+    <cislo_popisne>2365</cislo_popisne>
+  </adresa>
+  <adresa id="8">
+    <ulice>Lipová</ulice>
+    <mesto>Lučina</mesto>
+    <cislo_popisne>125</cislo_popisne>
+  </adresa>
+  <adresa id="9">
+    <ulice>Opřetická</ulice>
+    <mesto>České Budějovice</mesto>
+    <cislo_popisne>10/2</cislo_popisne>
+  </adresa>
+  <adresa id="10">
+    <ulice>Dubová</ulice>
+    <mesto>Olomouc</mesto>
+    <cislo_popisne>51/6</cislo_popisne>
+  </adresa>
+</adresy>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E944A868-67DE-40A9-92B1-64D911915E73}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>JISdata</RootNamespace>
+    <AssemblyName>JISdata</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\AdresaTable.cs" />
+    <Compile Include="DAO\DvojiceTable.cs" />
+    <Compile Include="DAO\JezdecTable.cs" />
+    <Compile Include="DAO\KunTable.cs" />
+    <Compile Include="DAO\OsobaTable.cs" />
+    <Compile Include="DAO\SoutezTable.cs" />
+    <Compile Include="DAO\StajTable.cs" />
+    <Compile Include="DAO\VysledekTable.cs" />
+    <Compile Include="DAO\ZavodyTable.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="Dvojice.cs" />
+    <Compile Include="Adresa.cs" />
+    <Compile Include="Jezdec.cs" />
+    <Compile Include="Kun.cs" />
+    <Compile Include="Osoba.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Soutez.cs" />
+    <Compile Include="Staj.cs" />
+    <Compile Include="Vysledek.cs" />
+    <Compile Include="Zavody.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

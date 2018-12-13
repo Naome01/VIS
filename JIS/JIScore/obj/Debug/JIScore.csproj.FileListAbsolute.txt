@@ -1,0 +1,7 @@
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\obj\Debug\JIScore.csprojAssemblyReference.cache
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\obj\Debug\JIScore.csproj.CoreCompileInputs.cache
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\bin\Debug\JIScore.dll.config
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\bin\Debug\JIScore.dll
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\bin\Debug\JIScore.pdb
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\obj\Debug\JIScore.dll
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JIScore\obj\Debug\JIScore.pdb

@@ -1,0 +1,14 @@
+C:\Users\barca\source\repos\JIS\JISdata\obj\Debug\JISdata.csprojAssemblyReference.cache
+C:\Users\barca\source\repos\JIS\JISdata\obj\Debug\JISdata.csproj.CoreCompileInputs.cache
+C:\Users\barca\source\repos\JIS\JISdata\bin\Debug\JISdata.exe.config
+C:\Users\barca\source\repos\JIS\JISdata\bin\Debug\JISdata.exe
+C:\Users\barca\source\repos\JIS\JISdata\bin\Debug\JISdata.pdb
+C:\Users\barca\source\repos\JIS\JISdata\obj\Debug\JISdata.exe
+C:\Users\barca\source\repos\JIS\JISdata\obj\Debug\JISdata.pdb
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\obj\Debug\JISdata.csprojAssemblyReference.cache
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\obj\Debug\JISdata.csproj.CoreCompileInputs.cache
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\obj\Debug\JISdata.exe
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\obj\Debug\JISdata.pdb
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\bin\Debug\JISdata.exe.config
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\bin\Debug\JISdata.exe
+D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\bin\Debug\JISdata.pdb
