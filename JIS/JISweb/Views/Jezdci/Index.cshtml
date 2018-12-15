@@ -1,0 +1,37 @@
+﻿@model JezdecModel
+
+
+@{
+    ViewData["Title"] = "Jezdci";
+}
+<div class="jumbotron"> <h2>Jezdci</h2></div>
+
+
+<table style="width:100%; text-align:center">
+    <tr style="text-align:center">
+        <th style="text-align:center">Jméno</th>
+        <th style="text-align:center">číslo licence</th>
+        <th style="text-align:center">Aktivní licence</th>
+
+    </tr>
+    @foreach (var item in Model.jezdci)
+    {
+        <tr>
+            <td>
+                @item.jmeno
+            </td>
+            <td>
+                @item.cislo_licence
+            </td>
+            @if (item.licence.Value)
+            {
+                <td > Ano </td>}
+            else
+            {
+                <td > Ne </td>}
+        </tr>
+    }
+
+
+
+</table>

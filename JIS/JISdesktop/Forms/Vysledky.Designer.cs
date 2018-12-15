@@ -30,7 +30,6 @@ namespace JISdata.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vysledky));
             this.zavodyBox = new System.Windows.Forms.ComboBox();
             this.soutezBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -38,6 +37,11 @@ namespace JISdata.Forms
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.jezdec_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kun_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chybyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trbodyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vyloucenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.casDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vysledekBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,11 +54,6 @@ namespace JISdata.Forms
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.chybyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trbodyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vyloucenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.casDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vysledekBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -134,6 +133,38 @@ namespace JISdata.Forms
             this.kun_name.HeaderText = "Kůň";
             this.kun_name.Name = "kun_name";
             this.kun_name.ReadOnly = true;
+            // 
+            // chybyDataGridViewTextBoxColumn
+            // 
+            this.chybyDataGridViewTextBoxColumn.DataPropertyName = "chyby";
+            this.chybyDataGridViewTextBoxColumn.HeaderText = "chyby";
+            this.chybyDataGridViewTextBoxColumn.Name = "chybyDataGridViewTextBoxColumn";
+            this.chybyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // trbodyDataGridViewTextBoxColumn
+            // 
+            this.trbodyDataGridViewTextBoxColumn.DataPropertyName = "tr_body";
+            this.trbodyDataGridViewTextBoxColumn.HeaderText = "tr_body";
+            this.trbodyDataGridViewTextBoxColumn.Name = "trbodyDataGridViewTextBoxColumn";
+            this.trbodyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vyloucenDataGridViewTextBoxColumn
+            // 
+            this.vyloucenDataGridViewTextBoxColumn.DataPropertyName = "vyloucen";
+            this.vyloucenDataGridViewTextBoxColumn.HeaderText = "vyloucen";
+            this.vyloucenDataGridViewTextBoxColumn.Name = "vyloucenDataGridViewTextBoxColumn";
+            this.vyloucenDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // casDataGridViewTextBoxColumn
+            // 
+            this.casDataGridViewTextBoxColumn.DataPropertyName = "cas";
+            this.casDataGridViewTextBoxColumn.HeaderText = "cas";
+            this.casDataGridViewTextBoxColumn.Name = "casDataGridViewTextBoxColumn";
+            this.casDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vysledekBindingSource
+            // 
+            this.vysledekBindingSource.DataSource = typeof(JISdata.Vysledek);
             // 
             // label1
             // 
@@ -228,6 +259,7 @@ namespace JISdata.Forms
             this.checkBox1.Size = new System.Drawing.Size(18, 17);
             this.checkBox1.TabIndex = 33;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button1
             // 
@@ -239,38 +271,6 @@ namespace JISdata.Forms
             this.button1.Text = "Uložit";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // chybyDataGridViewTextBoxColumn
-            // 
-            this.chybyDataGridViewTextBoxColumn.DataPropertyName = "chyby";
-            this.chybyDataGridViewTextBoxColumn.HeaderText = "chyby";
-            this.chybyDataGridViewTextBoxColumn.Name = "chybyDataGridViewTextBoxColumn";
-            this.chybyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // trbodyDataGridViewTextBoxColumn
-            // 
-            this.trbodyDataGridViewTextBoxColumn.DataPropertyName = "tr_body";
-            this.trbodyDataGridViewTextBoxColumn.HeaderText = "tr_body";
-            this.trbodyDataGridViewTextBoxColumn.Name = "trbodyDataGridViewTextBoxColumn";
-            this.trbodyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vyloucenDataGridViewTextBoxColumn
-            // 
-            this.vyloucenDataGridViewTextBoxColumn.DataPropertyName = "vyloucen";
-            this.vyloucenDataGridViewTextBoxColumn.HeaderText = "vyloucen";
-            this.vyloucenDataGridViewTextBoxColumn.Name = "vyloucenDataGridViewTextBoxColumn";
-            this.vyloucenDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // casDataGridViewTextBoxColumn
-            // 
-            this.casDataGridViewTextBoxColumn.DataPropertyName = "cas";
-            this.casDataGridViewTextBoxColumn.HeaderText = "cas";
-            this.casDataGridViewTextBoxColumn.Name = "casDataGridViewTextBoxColumn";
-            this.casDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vysledekBindingSource
-            // 
-            this.vysledekBindingSource.DataSource = typeof(Vysledek);
             // 
             // numericUpDown1
             // 
@@ -306,7 +306,6 @@ namespace JISdata.Forms
             this.Controls.Add(this.soutezBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Vysledky";
             this.Text = "Výsledky";
             this.Load += new System.EventHandler(this.Vysledky_Load);

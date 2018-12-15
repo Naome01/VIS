@@ -35,9 +35,9 @@ namespace JISdata.DAO
         }
 
 
-        public void Insert(Adresa adresa)
-        {     
-            
+        public int Insert(Adresa adresa)
+        {
+            adresa.aid = getLastID() + 1;
             adresy.Add(adresa);
 
             XmlWriterSettings settings = new XmlWriterSettings();
@@ -64,7 +64,7 @@ namespace JISdata.DAO
             xw.WriteEndDocument(); // konec dokument
             xw.Flush();
             xw.Dispose();
-
+            return adresa.aid;
         }
 
         public List<Adresa> loadAdresses()
@@ -162,7 +162,18 @@ namespace JISdata.DAO
             return adresa;
         }
 
+        public int findAddress(String ulice, String cp, String mesto)
+        {
+            try
+            {
+                return adresy.Single(s => (s.cislo_popisne.Equals(cp) && s.ulice.Equals(ulice) && s.mesto.Equals(mesto))).aid;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
 
+        }
 
     }
 

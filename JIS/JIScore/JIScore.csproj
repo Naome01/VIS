@@ -38,5 +38,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IndexModel.cs" />
+    <Compile Include="JezdecFormModel.cs" />
+    <Compile Include="StajFormModel.cs" />
+    <Compile Include="VysledekFormModel.cs" />
+    <Compile Include="VysledekJezdce.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JISdata\JISdata.csproj">
+      <Project>{e944a868-67de-40a9-92b1-64d911915e73}</Project>
+      <Name>JISdata</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JIScore", "JIScore\JIScore.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JISdesktop", "JISdesktop\JISdesktop.csproj", "{6898D420-F604-4657-848E-42A387644962}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JISweb", "JISweb\JISweb.csproj", "{37A2238D-06E6-4AC8-93A3-8C040C12C3A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6898D420-F604-4657-848E-42A387644962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6898D420-F604-4657-848E-42A387644962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6898D420-F604-4657-848E-42A387644962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A2238D-06E6-4AC8-93A3-8C040C12C3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A2238D-06E6-4AC8-93A3-8C040C12C3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A2238D-06E6-4AC8-93A3-8C040C12C3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A2238D-06E6-4AC8-93A3-8C040C12C3A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Collections.Generic;
 
 namespace JISdata.DAO
 {
@@ -10,6 +10,8 @@ namespace JISdata.DAO
     {
         public static String SQL_SELECT = "SELECT * FROM \"dvojice\"";
         public static String SQL_SELECT_ONE = "SELECT * FROM \"dvojice\" WHERE kun=@kun AND jezdec = @jezdec";
+        public static String SQL_SELECT_JEZDEC = "SELECT * FROM \"dvojice\" WHERE jezdec = @jezdec";
+
         public static String SQL_SELECT_ID = "SELECT * FROM \"dvojice\" WHERE did = @id";
         public static String SQL_INSERT = "INSERT INTO \"dvojice\" VALUES (@did, @jezdec, @kun)";
         public static String SQL_DELETE_ID = "DELETE FROM \"dvojice\" WHERE did=@id";
@@ -127,12 +129,16 @@ namespace JISdata.DAO
             SqlDataReader reader = db.Select(command);
 
             Collection<Dvojice> dvojice = Read(reader);
-            Dvojice dvoj = null;
+            Dvojice dvoj = new Dvojice();
             if (dvojice.Count == 1)
             {
                 dvoj = dvojice[0];
             }
             reader.Close();
+            if(dvojice.Count == 0)
+            {
+                dvoj.did = -1;
+            }
 
             if (pDb == null)
             {
@@ -140,6 +146,29 @@ namespace JISdata.DAO
             }
 
             return dvoj.did;
+        }
+        public static Collection<Dvojice> SelectJezdec(string jezdec, Database pDb = null)
+        {
+            Database db;
+            if (pDb == null)
+            {
+                db = new Database();
+                db.Connect();
+            }
+            else
+            {
+                db = (Database)pDb;
+            }
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_JEZDEC);
+
+            command.Parameters.AddWithValue("@jezdec", jezdec);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Dvojice> dvojice = Read(reader);
+            
+            return dvojice;
         }
         public static Dvojice Select(int did, Database pDb = null)
         {

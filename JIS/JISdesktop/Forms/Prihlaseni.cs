@@ -51,14 +51,33 @@ namespace JISdesktop.Forms
                 if (staj.heslo == textHeslo.Text)
                 {
                    
-                    MainPrihlasen form = new MainPrihlasen(this, staj);
+                    StajPrihlasen form = new StajPrihlasen(this, staj);
                     form.Show();
                     this.Hide();
                 }
                 else errorProvider.SetError(textHeslo, "Špatné ID nebo heslo.");
             }
+            else if(textID.Text.Equals("Admin") && textHeslo.Text.Equals("AdminHeslo"))
+            {
+                AdminForm form = new AdminForm(this);
+                form.Show();
+                this.Hide();
+            }
 
-            else errorProvider.SetError(textID, "Špatné ID.");
+            else
+            {
+                Jezdec jezdec = JezdecTable.Select(textID.Text);
+                if(jezdec == null) errorProvider.SetError(textHeslo, "Špatné ID");
+                if (jezdec.heslo == textHeslo.Text)
+                {
+
+                    JezdecPrihlasen form = new JezdecPrihlasen(this, jezdec);
+                    form.Show();
+                    this.Hide();
+                }
+                else errorProvider.SetError(textHeslo, "Špatné ID nebo heslo.");
+
+            }
 
         }
     }

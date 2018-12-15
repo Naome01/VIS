@@ -10,35 +10,34 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using JISdata;
 using JISdata.DAO;
+using JIScore;
 
 namespace JISdata.Forms
 {
     public partial class Vysledky : Form
     {
-        int cid, zid, sid;
-
+        VysledekFormModel model;
         public Vysledky(int sid)
         {
             InitializeComponent();
-            this.sid = sid;
+            model = new VysledekFormModel(sid);
         }
 
         private void Vysledky_Load(object sender, EventArgs e)
         {
-            Collection< Zavody> zavody =   ZavodyTable.SelectStaj(sid);
             zavodyBox.DisplayMember = "info";
             zavodyBox.ValueMember = "zid";
-            zavodyBox.DataSource = zavody;
+            zavodyBox.DataSource = model.zavody;
 
-            zid = (int)zavodyBox.SelectedValue;
-            Collection< Soutez> souteze =   SoutezTable.Select_zavod(zid);
+            model.zid = (int)zavodyBox.SelectedValue;
+            model.reloadSouteze();
             zavodyBox.SelectedValueChanged += ZavodyBox_SelectedValueChanged;
 
             soutezBox.DisplayMember = "obtiznost";
             soutezBox.ValueMember = "cid";
-            soutezBox.DataSource = souteze;
+            soutezBox.DataSource = model.souteze;
 
-            cid = (int)soutezBox.SelectedValue;
+            model.cid = (int)soutezBox.SelectedValue;
 
             soutezBox.SelectedValueChanged += SoutezBox_SelectedValueChanged;
 
@@ -104,12 +103,12 @@ namespace JISdata.Forms
             if (checkBox1.CheckState == CheckState.Checked) vysledek.vyloucen = true;
             else vysledek.vyloucen = false;
 
-              VysledekTable.Update(vysledek);
+            model.updateVysledek(vysledek);
             vysledek =   VysledekTable.SelectId(vysledek.did, vysledek.cid);
 
-            cid = (int)soutezBox.SelectedValue;
+            model.cid = (int)soutezBox.SelectedValue;
 
-            Collection<Vysledek> vysledeky = VysledekTable.SelectSoutez(cid);
+            Collection<Vysledek> vysledeky = VysledekTable.SelectSoutez(model.cid);
             BindingList<Vysledek> bindingList = new BindingList<Vysledek>(vysledeky);
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = bindingList;
@@ -120,9 +119,9 @@ namespace JISdata.Forms
 
         private void SoutezBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            cid = (int)soutezBox.SelectedValue;
+            model.cid = (int)soutezBox.SelectedValue;
 
-            Collection<Vysledek> vysledek = VysledekTable.SelectSoutez(cid);
+            Collection<Vysledek> vysledek = VysledekTable.SelectSoutez(model.cid);
             BindingList<Vysledek> bindingList = new BindingList<Vysledek>(vysledek);
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = bindingList;
@@ -130,11 +129,27 @@ namespace JISdata.Forms
 
         private void ZavodyBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            int zid = (int)zavodyBox.SelectedValue;
-            Collection< Soutez> souteze =   SoutezTable.Select_zavod(zid);
+            model.zid = (int)zavodyBox.SelectedValue;
+            model.reloadSouteze();
             soutezBox.DisplayMember = "obtiznost";
             soutezBox.ValueMember = "cid";
-            soutezBox.DataSource = souteze;
+            soutezBox.DataSource = model.souteze;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                numericUpDown1.Value = 0;
+                textBox2.Text = "";
+                numericUpDown1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+            }
+            if (!checkBox1.Checked)
+            {
+                numericUpDown1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+            }
         }
     }
 }

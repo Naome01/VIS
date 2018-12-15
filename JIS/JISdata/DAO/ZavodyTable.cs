@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration.Assemblies;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Data;
@@ -9,8 +10,9 @@ namespace JISdata.DAO
     {
         public static String SQL_SELECT = "SELECT * FROM \"zavody\" order by datum desc";
         public static String SQL_SELECT_ID = "SELECT * FROM \"zavody\" WHERE zid=@id";
-        public static String SQL_SELECT_Future = "SELECT * FROM \"zavody\" WHERE datum > @datum";
+        public static String SQL_SELECT_Future = "SELECT * FROM \"zavody\" WHERE datum >= @datum";
         public static String SQL_SELECT_SID = "SELECT * FROM \"zavody\" WHERE sid=@id AND datum <= @datum";
+        public static String SQL_SELECT_ALL_SID = "SELECT * FROM \"zavody\" WHERE sid=@id";
 
         public static String SQL_SELECT_LAST = "Select max(zid) from zavody";
         public static String SQL_INSERT = "INSERT INTO \"zavody\" VALUES ((Select max(zid) from zavody) + 1, @sid, @datum)";
@@ -199,6 +201,37 @@ namespace JISdata.DAO
 
             Collection<Zavody> zavody = Read(reader);
             
+            reader.Close();
+
+            if (pDb == null)
+            {
+                db.Close();
+            }
+
+            return zavody;
+        }
+
+        public static Collection<Zavody> SelectAllFromStaj(int sid, Database pDb = null)
+        {
+            Database db;
+            if (pDb == null)
+            {
+                db = new Database();
+                db.Connect();
+            }
+            else
+            {
+                db = (Database)pDb;
+            }
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_ALL_SID);
+
+            command.Parameters.AddWithValue("@id", sid);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Zavody> zavody = Read(reader);
+
             reader.Close();
 
             if (pDb == null)

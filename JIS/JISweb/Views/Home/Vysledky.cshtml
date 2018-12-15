@@ -1,0 +1,36 @@
+﻿@model VysledkyModel
+@{
+    ViewData["Title"] = "Vysledky";
+}
+
+<div class="jumbotron"> <h2>Vysledky</h2></div>
+
+@foreach (var s in Model.souteze)
+{
+<h3>@s.obtiznost</h3>
+<table style="width:100%; text-align:center">
+    <tr style="text-align:center">
+        <th style="text-align:center">Jezdec</th>
+        <th style="text-align:center">Kun</th>
+
+        <th style="text-align:center">tr_body</th>
+        <th style="text-align:center">Cas</th>
+
+    </tr>
+    @foreach (var item in Model.vysledek.Where(w => w.cid == s.cid))
+    {
+        <tr>
+            <td>
+                @item.jezdec_name 
+            </td>
+            <td>
+                @item.kun_name
+            </td>
+            
+            <td>@item.tr_body</td>
+            <td>@item.cas</td>
+        </tr>
+    }
+</table>
+
+}

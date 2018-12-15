@@ -9,8 +9,12 @@ namespace JISdata.DAO
     {
         public static String SQL_SELECT = "SELECT * FROM \"osoba\"";
         public static String SQL_SELECT_ID = "SELECT * FROM \"osoba\" WHERE oid=@id";
+        public static String SQL_SELECT_CHANGES = "SELECT * FROM \"osoba\" WHERE oid < 0";
+
         public static String SQL_SELECT_LAST = "SELECT * FROM \"osoba\" WHERE oid=(SELECT MAX(oid) from osoba)";
         public static String SQL_INSERT = "INSERT INTO \"osoba\" VALUES ((SELECT MAX(oid) from osoba) +1, @jmeno, @prijmeni, @narozen, @email," +
+            "@telefon, @adresa)";
+        public static String SQL_INSERT_CHANGE = "INSERT INTO \"osoba\" VALUES (@oid, @jmeno, @prijmeni, @narozen, @email," +
             "@telefon, @adresa)";
         public static String SQL_DELETE_ID = "DELETE FROM \"osoba\" WHERE oid=@id";
         public static String SQL_UPDATE = "UPDATE \"osoba\" SET jmeno=@jmeno, prijmeni=@prijmeni, narozen=@narozen," +
@@ -52,6 +56,25 @@ namespace JISdata.DAO
             }
 
             return osoba;
+        }
+        public static void InsertChange(Osoba osoba, Database pDb = null)
+        {
+            Database db;
+            if (pDb == null)
+            {
+                db = new Database();
+                db.Connect();
+            }
+            else
+            {
+                db = (Database)pDb;
+            }
+
+            SqlCommand command = db.CreateCommand(SQL_INSERT_CHANGE);
+            PrepareCommand(command, osoba);
+            int ret = db.ExecuteNonQuery(command);
+
+            
         }
 
         /// <summary>
@@ -100,6 +123,32 @@ namespace JISdata.DAO
             }
 
             SqlCommand command = db.CreateCommand(SQL_SELECT);
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Osoba> osoby = Read(reader);
+            reader.Close();
+
+            if (pDb == null)
+            {
+                db.Close();
+            }
+
+            return osoby;
+        }
+        public static Collection<Osoba> SelectCHanges(Database pDb = null)
+        {
+            Database db;
+            if (pDb == null)
+            {
+                db = new Database();
+                db.Connect();
+            }
+            else
+            {
+                db = (Database)pDb;
+            }
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_CHANGES);
             SqlDataReader reader = db.Select(command);
 
             Collection<Osoba> osoby = Read(reader);

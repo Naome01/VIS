@@ -42,8 +42,23 @@ namespace JISdata
             bool ret = true;
             if (Connection.State != System.Data.ConnectionState.Open)
             {
+                ConnectionStringSettingsCollection settings =
+               ConfigurationManager.ConnectionStrings;
+
+                ConnectionStringSettings conf = new ConnectionStringSettings("LocalMssql","Data Source =.\\SQLEXPRESS; Initial Catalog = JIS; Integrated Security = SSPI; MultipleActiveResultSets = true;");
+
+                if (settings != null)
+                {
+                    foreach (ConnectionStringSettings cs in settings)
+                    {
+                        Console.WriteLine(cs.Name);
+                        Console.WriteLine(cs.ProviderName);
+                        Console.WriteLine(cs.ConnectionString);
+                    }
+                }
                 // connection string is stored in file App.config or Web.config
-                ret = Connect(ConfigurationManager.ConnectionStrings["JISLocalhost"].ConnectionString);
+                ret = Connect(conf.ConnectionString);
+                //ret = Connect("Data Source=.\SQLEXPRESS;Initial Catalog=JIS;Integrated Security=SSPI;MultipleActiveResultSets=true;");
             }
             return ret;
         }

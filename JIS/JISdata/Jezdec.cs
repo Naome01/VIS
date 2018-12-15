@@ -16,6 +16,8 @@ namespace JISdata
 
         public string telefon { get; set; }
 
+        public string heslo { get; set; }
+        
         public void Print()
         {
             if (licence.HasValue)

@@ -55,4 +55,9 @@
     <mesto>Olomouc</mesto>
     <cislo_popisne>51/6</cislo_popisne>
   </adresa>
+  <adresa id="11">
+    <ulice>Kozlovská</ulice>
+    <mesto>Vsetín</mesto>
+    <cislo_popisne>1</cislo_popisne>
+  </adresa>
 </adresy>

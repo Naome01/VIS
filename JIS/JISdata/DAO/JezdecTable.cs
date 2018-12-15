@@ -10,10 +10,10 @@ namespace JISdata.DAO
         public static String SQL_SELECT = "SELECT * FROM \"jezdec\"";
         public static String SQL_SELECT_ID = "SELECT * FROM \"jezdec\" WHERE cislo_licence=@id";
         public static String SQL_SELECT_STAJ = "SELECT * FROM \"jezdec\" WHERE sid=@sid";
-        public static String SQL_INSERT = "INSERT INTO \"jezdec\" VALUES (dbo.GenerateLicence((SELECT prijmeni from osoba WHERE oID = @oid)), @sid, @licence, @oid)";
+        public static String SQL_INSERT = "INSERT INTO \"jezdec\" VALUES (dbo.GenerateLicence((SELECT prijmeni from osoba WHERE oID = @oid)), @sid, @licence, @oid, @heslo)";
         public static String SQL_SELECT_O = "SELECT * FROM \"jezdec\" WHERE oID=@oid";
         public static String SQL_DELETE_ID = "DELETE FROM \"jezdec\" WHERE cislo_licence=@id";
-        public static String SQL_UPDATE = "UPDATE \"jezdec\" SET sid=@sid, licence=@licence, oID=@oid WHERE cislo_licence=@cislo_licence";
+        public static String SQL_UPDATE = "UPDATE \"jezdec\" SET sid=@sid, licence=@licence, oID=@oid, heslo = @heslo WHERE cislo_licence=@cislo_licence";
 
         /// <summary>
         /// Insert the record.
@@ -290,7 +290,8 @@ namespace JISdata.DAO
             else command.Parameters.AddWithValue("@licence", "0");
             
             command.Parameters.AddWithValue("@oid", jezdec.oid);
-           
+            command.Parameters.AddWithValue("@heslo", jezdec.heslo);
+
         }
 
         private static Collection<Jezdec> Read(SqlDataReader reader)
@@ -319,7 +320,12 @@ namespace JISdata.DAO
                 Osoba osoba =JISdata.DAO.OsobaTable.Select(jezdec.oid);
                 jezdec.jmeno = osoba.jmeno + " " + osoba.prijmeni;
                 jezdec.telefon = osoba.telefon.ToString();
-                
+                if (!reader.IsDBNull(i))
+                {
+                    jezdec.heslo = reader.GetString(++i);
+
+                }
+                else jezdec.heslo = "11";
                 jezdci.Add(jezdec);
             }
             return jezdci;

@@ -12,14 +12,16 @@ namespace JISdata.DAO
         public static String SQL_SELECT = "SELECT * FROM \"vysledek\"";
         public static String SQL_SELECT_ONE = "SELECT * FROM \"vysledek\" WHERE cid=@id AND did = @did";
         public static String SQL_SELECT_SOUTEZ = "SELECT * FROM \"vysledek\" where cid = @id order by tr_body, cas";
-        public static String SQL_PRIHLAS = "execute dbo.Prihlaseni @kun , @jezdec, @cid";
+        public static String SQL_PRIHLAS = "INSERT INTO \"vysledek\" (did, cid) VALUES ( @did , @cid )";
         public static String SQL_DELETE_ID = "DELETE FROM \"vysledek\" WHERE did=@id, cid = @cid";
-        public static String SQL_UPDATE_VYSLEDEK = "execute dbo.PridejVysledek @did , @cid, @cas, @chyby, @vyloucen";
+        public static String SQL_UPDATE_VYSLEDEK = "UPDATE \"vysledek\" SET chyby = @chyby, tr_body = @tr_body, vyloucen = @vyloucen, cas = @cas WHERE did = @did AND cid = @cid";
+        public static String SQL_SELECT_JEZDEC = "SELECT * FROM \"vysledek\" where did = @id";
+
 
         /// <summary>
         /// Insert the record.
         /// </summary>
-        public static int Prihlas(Kun kun, Jezdec jezdec, Soutez soutez, Database pDb = null)
+        public static int Prihlas(Dvojice dvojice, Soutez soutez, Database pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -34,8 +36,7 @@ namespace JISdata.DAO
 
             SqlCommand command = db.CreateCommand(SQL_PRIHLAS);
 
-            command.Parameters.AddWithValue("@kun", kun.cislo_licence);
-            command.Parameters.AddWithValue("@jezdec", jezdec.cislo_licence);
+            command.Parameters.AddWithValue("@did", dvojice.did);
             command.Parameters.AddWithValue("@cid", soutez.cid);
 
 
@@ -96,6 +97,34 @@ namespace JISdata.DAO
             }
 
             SqlCommand command = db.CreateCommand(SQL_SELECT);
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Vysledek> jezdci = Read(reader);
+            reader.Close();
+
+            if (pDb == null)
+            {
+                db.Close();
+            }
+
+            return jezdci;
+        }
+        public static Collection<Vysledek> SelectDvojice(int did, Database pDb = null)
+        {
+            Database db;
+            if (pDb == null)
+            {
+                db = new Database();
+                db.Connect();
+            }
+            else
+            {
+                db = (Database)pDb;
+            }
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_JEZDEC);
+            command.Parameters.AddWithValue("@id", did);
+
             SqlDataReader reader = db.Select(command);
 
             Collection<Vysledek> jezdci = Read(reader);

@@ -1,0 +1,51 @@
+﻿@model KunModel
+
+
+@{
+    ViewData["Title"] = "Kone";
+}
+<div class="jumbotron"> <h2>Koně</h2></div>
+
+
+<table style="width:100%; text-align:center">
+    <tr style="text-align:center">
+        <th style="text-align:center">Jméno</th>
+        <th style="text-align:center">Narozen</th>
+        <th style="text-align:center">Plemeno</th>
+        <th style="text-align:center">Číslo licence</th>
+        <th style="text-align:center">Platná licence</th>
+
+
+
+    </tr>
+    @foreach (var item in Model.kone)
+    {
+        <tr>
+            <td>
+                @item.jmeno
+            </td>
+            @if (item.narozen.HasValue)
+            {
+            <td> @item.narozen.Value.ToString("dd.MM.yyyy")</td>
+            }
+            else
+            {<td></td>}
+            <td>@item.plemeno</td>
+
+            <td>
+                @item.cislo_licence
+            </td>
+            @if (item.licence.Value)
+            {
+                <td> Ano </td>}
+            else
+            {
+                <td> Ne </td>}
+
+                       
+        </tr>
+    }
+
+
+
+</table>

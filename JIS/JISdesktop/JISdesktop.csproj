@@ -52,14 +52,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainPrihlasen.cs">
+    <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainPrihlasen.Designer.cs" />
+    <Compile Include="Forms\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JezdecPrihlasen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JezdecPrihlasen.Designer.cs">
+      <DependentUpon>JezdecPrihlasen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Prihlaseni.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Prihlaseni.Designer.cs" />
+    <Compile Include="Forms\StajPrihlasen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StajPrihlasen.Designer.cs">
+      <DependentUpon>StajPrihlasen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Vysledky.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,8 +82,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\MainPrihlasen.resx" />
+    <EmbeddedResource Include="Forms\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JezdecPrihlasen.resx">
+      <DependentUpon>JezdecPrihlasen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Prihlaseni.resx" />
+    <EmbeddedResource Include="Forms\StajPrihlasen.resx">
+      <DependentUpon>StajPrihlasen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Vysledky.resx">
       <DependentUpon>Vysledky.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +104,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\JIScore.VysledekJezdce.datasource" />
+    <None Include="Properties\DataSources\JISdata.Kun.datasource" />
+    <None Include="Properties\DataSources\JISdata.Soutez.datasource" />
+    <None Include="Properties\DataSources\JISdata.Vysledek.datasource" />
+    <None Include="Properties\DataSources\JISdata.Zavody.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,6 +131,9 @@
       <Project>{e944a868-67de-40a9-92b1-64d911915e73}</Project>
       <Name>JISdata</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

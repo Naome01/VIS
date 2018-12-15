@@ -1,0 +1,38 @@
+﻿@model JISweb.Models.HomeModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="jumbotron"> <h2>Závody</h2></div>
+
+
+<table style="width:100%; text-align:center">
+    <tr style="text-align:center">
+        <th style="text-align:center">Stáj</th>
+        <th style="text-align:center">Datum</th>
+        <th style="text-align:center">Startovní / Výsledková listina</th>
+
+    </tr>
+    @foreach (var item in Model.zavody)
+    {
+        <tr>
+            <td>
+                @item.staj.nazev
+            </td>
+            <td>
+                @item.zavod.datum
+            </td>
+            @if (item.zavod.datum < DateTime.Now)
+            {
+                <td> <a href=" @Url.Action("Vysledek", "Home", new { @id = item.zavod.zid });"> <span class="glyphicon glyphicon-bell"></span></a></td>
+
+            }
+            else
+            {
+                <td> <a href=" @Url.Action("Vysledek", "Home", new { @id = item.zavod.zid });"> <span class="glyphicon glyphicon-list-alt"></span></a></td>
+            }
+        </tr>
+    }
+
+
+
+</table>

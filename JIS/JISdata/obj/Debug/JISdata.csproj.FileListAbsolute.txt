@@ -12,3 +12,10 @@ D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\obj\Debug\JISdata.pdb
 D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\bin\Debug\JISdata.exe.config
 D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\bin\Debug\JISdata.exe
 D:\Banska\5\VIS\JIS\JIS_proj\JIS\JISdata\bin\Debug\JISdata.pdb
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\bin\Debug\JISdata.pdb
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\obj\Debug\JISdata.csproj.CoreCompileInputs.cache
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\obj\Debug\JISdata.pdb
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\obj\Debug\JISdata.csprojAssemblyReference.cache
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\bin\Debug\JISdata.dll.config
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\bin\Debug\JISdata.dll
+D:\Banska\5\VIS\JIS\JIS_proj\VIS\JIS\JISdata\obj\Debug\JISdata.dll
